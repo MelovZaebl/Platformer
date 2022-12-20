@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int Damage;
     private BoxCollider2D coll;
 
+    // NAS RANO GIT TEST
+
     private Animator animator;
 
     private void Start() {
