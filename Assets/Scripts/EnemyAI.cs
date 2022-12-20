@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
         }
         if(isRightWall())
         {
-            Debug.Log(Physics2D.Raycast(coll.bounds.center, Vector2.right, 1f, ground));
+            Debug.Log(Physics2D.Raycast(coll.bounds.center, Vector2.right, .2f, ground));
             dir = -2;
         }
        
@@ -40,12 +40,12 @@ public class EnemyAI : MonoBehaviour
 
     private bool isLeftWall()
     {
-        return Physics2D.Raycast(coll.bounds.center, Vector2.left, 1f, ground);
+        return Physics2D.Raycast(coll.bounds.center, Vector2.left, .5f, ground);
         
     }
     private bool isRightWall()
     {
-        return Physics2D.Raycast(coll.bounds.center, Vector2.right, 1f, ground);
+        return Physics2D.Raycast(coll.bounds.center, Vector2.right, .5f, ground);
 
     }
 
