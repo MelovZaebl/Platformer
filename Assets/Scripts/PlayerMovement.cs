@@ -6,14 +6,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private SpriteRenderer _chapterSprite;
 
-    private float input;
-    private Rigidbody2D rb;
+    public static float input;
+    public static Rigidbody2D rb;
     public LayerMask groundLayer;
 
     private bool canmove = true;
     [SerializeField] private int HP;
     [SerializeField] private int Damage;
-
     private BoxCollider2D coll;
 
     private Animator animator;
@@ -26,36 +25,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canmove)
+        if (LivesScript.canmove)
         {
             Move();
         }
-        if (HP > 0)
+        if (LivesScript.current > 0)
         {
-            canmove = true;
-        }
-        
+            LivesScript.canmove = true;
+        } 
     }
     void Update()
     {
         Jump();
         FlyCheck();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            canmove = false;
-            HP -= Damage;
-
-            rb.AddForce(Vector2.left * 100, ForceMode2D.Impulse);
-            if (HP <= 0)
-            {
-                Destroy(gameObject);
-            }
-            Debug.Log(HP);
-        }
-    }
+    
 
 
 
