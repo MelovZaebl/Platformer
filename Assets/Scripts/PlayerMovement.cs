@@ -6,16 +6,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private SpriteRenderer _chapterSprite;
 
-    public static float input;
-    public static Rigidbody2D rb;
+    private float input;
+    private Rigidbody2D rb;
     public LayerMask groundLayer;
 
-    private bool canmove = true;
-    [SerializeField] private int HP;
-    [SerializeField] private int Damage;
     private BoxCollider2D coll;
-
-    // NAS RANO GIT TEST
 
     private Animator animator;
 
@@ -25,26 +20,12 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
-    {
-        if (LivesScript.canmove)
-        {
-            Move();
-        }
-        if (LivesScript.current > 0)
-        {
-            LivesScript.canmove = true;
-        } 
-    }
     void Update()
     {
-        Jump();
-        FlyCheck();
+       Move();
+       Jump();
+       FlyCheck();
     }
-    
-
-
-
 
     private void Move()
     {
