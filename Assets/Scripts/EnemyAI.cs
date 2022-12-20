@@ -6,12 +6,13 @@ public class EnemyAI : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private LayerMask enemy;
     private BoxCollider2D coll;
     private float dir = 2;
     private float forWallleft=1.3f;
     private float forWallright=1.3f;
     [SerializeField] private SpriteRenderer sprite;
-
+    private Vector3 f = new Vector3(1.2f, 0f);
     // Start is called before the first frame update
     void Start()
     {
@@ -59,19 +60,66 @@ public class EnemyAI : MonoBehaviour
 
     private bool isLeftWall()
     {
-        return Physics2D.Raycast(coll.bounds.center, Vector2.left, .5f, ground);
+        if (!sprite.flipX)
+        {
+            if (Physics2D.Raycast(coll.bounds.center + f, Vector2.left, forWallleft, enemy))
+            {
+                return true;
+            }
+            else if (Physics2D.Raycast(coll.bounds.center, Vector2.left, .5f, ground))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (Physics2D.Raycast(coll.bounds.center - f, Vector2.left, forWallleft, enemy))
+            {
+                return true;
+            }
+            else if (Physics2D.Raycast(coll.bounds.center, Vector2.left, .5f, ground))
+            {
+                return true;
+            }
+        }
         
+       
+        return false;
     }
     private bool isRightWall()
     {
-        return Physics2D.Raycast(coll.bounds.center, Vector2.right, .5f, ground);
+        if (!sprite.flipX)
+        {
+            if (Physics2D.Raycast(coll.bounds.center + f, Vector2.right, forWallright, enemy))
+            {
+                return true;
+            }
+            else if (Physics2D.Raycast(coll.bounds.center, Vector2.right, .5f, ground))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            if (Physics2D.Raycast(coll.bounds.center - f, Vector2.right, forWallright, enemy))
+            {
+                return true;
+            }
+            else if (Physics2D.Raycast(coll.bounds.center, Vector2.right, .5f, ground))
+            {
+                return true;
+            }
+        }
+        
+        
+        return false;
 
     }
     public void jump()
     {
         if( Physics2D.Raycast(coll.bounds.center, Vector2.right, forWallright, ground)|| Physics2D.Raycast(coll.bounds.center, Vector2.left, forWallleft, ground))
         {
-            rb.AddForce(Vector2.up *4, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up*2.8f, ForceMode2D.Impulse);
         }
     }
     public bool isGround()

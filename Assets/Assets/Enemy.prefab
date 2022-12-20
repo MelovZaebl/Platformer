@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2440933498855447618}
   - component: {fileID: 2826356320733230539}
   - component: {fileID: 149988703814239382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -105,6 +105,9 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  enemy:
+    serializedVersion: 2
+    m_Bits: 64
   sprite: {fileID: 2826356320733230580}
 --- !u!114 &2440933498855447618
 MonoBehaviour:
@@ -130,7 +133,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3.09
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -175,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2826356320789866988}
   - component: {fileID: 2826356320789866989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2826356321202368250}
   - component: {fileID: 2826356321202368251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: EnemyHead
   m_Icon: {fileID: 0}
@@ -268,7 +271,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.067886665, y: 0.25}
+  m_Offset: {x: 0.024111837, y: 0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -279,5 +282,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4550865, y: 0.100000024}
+  m_Size: {x: 0.701062, y: 0.100000024}
   m_EdgeRadius: 0

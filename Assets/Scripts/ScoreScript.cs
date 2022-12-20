@@ -7,11 +7,16 @@ public class ScoreScript : MonoBehaviour
 {
     
     public Text ScoreText;
-    private int ScoreInt;
+    public static int ScoreInt;
 
     void Start()
     {
         ScoreInt = 0;
+        ScoreText.text = "Score: " + ScoreInt;
+    }
+    void FixedUpdate()
+    {
+        
         ScoreText.text = "Score: " + ScoreInt;
     }
 
