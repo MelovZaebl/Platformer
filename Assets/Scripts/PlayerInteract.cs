@@ -24,7 +24,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (coll.gameObject.tag == "EnemyHead")
         {
-            rb.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
         }
 
 

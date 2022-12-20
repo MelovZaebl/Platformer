@@ -102,6 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396fda408d4b01147b328c6ff1d2a6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
+  sprite: {fileID: 2826356320733230580}
 --- !u!114 &2440933498855447618
 MonoBehaviour:
   m_ObjectHideFlags: 0
