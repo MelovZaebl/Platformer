@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private BoxCollider2D coll;
 
+    // NAS RANO GIT TEST
+
     private Animator animator;
 
     private void Start() {
