@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
         coll = GetComponent<BoxCollider2D>(); 
         rb = GetComponent<Rigidbody2D>(); 
     }
-	// за что?
+    //здесь персонаж получает по Е-баллу и отталкивается в лево
     private void OnTriggerEnter2D(Collider2D otherColl)
     {
         Debug.Log($"{otherColl.gameObject.tag}");
