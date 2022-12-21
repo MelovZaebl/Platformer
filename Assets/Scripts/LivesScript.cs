@@ -13,7 +13,7 @@ public class LivesScript : MonoBehaviour
     public static int current;
     [SerializeField] private Text Lives;
     private Animator animator;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +41,23 @@ public class LivesScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            PlayerMovement.counter = PlayerMovement.totaltime;
+            if (transform.position.x <= collision.transform.position.x)
+            {
+                PlayerMovement.knockright = true;
+            }
+            if (transform.position.x > collision.transform.position.x)
+            {
+                PlayerMovement.knockright = false;
+            }
             canmove = false;
             HP -= Damage;
-            if (PlayerMovement.input>0)
-            {
-                PlayerMovement.rb.AddForce(Vector2.left * 70, ForceMode2D.Impulse);
-            }
-            else PlayerMovement.rb.AddForce(Vector2.right * 70, ForceMode2D.Impulse);
+            
+            //if (PlayerMovement.input>0)
+            //{
+            //    PlayerMovement.rb.AddForce(Vector2.left * 70, ForceMode2D.Impulse);
+            //}
+            //else PlayerMovement.rb.AddForce(Vector2.right * 70, ForceMode2D.Impulse);
             if (HP <= 0)
             {
                 

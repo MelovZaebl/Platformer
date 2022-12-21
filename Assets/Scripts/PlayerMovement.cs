@@ -6,15 +6,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private SpriteRenderer _chapterSprite;
+    [SerializeField] private int HP;
+    [SerializeField] private int Damage;
+     public static float knock=6f;
+     public static bool knockright;
+     public static float totaltime=0.2f;
+     public static float counter;
+
 
     public static float input;
     public static Rigidbody2D rb;
     public LayerMask groundLayer;
 
     private bool canmove = true;
-    [SerializeField] private int HP;
-    [SerializeField] private int Damage;
+   
     private BoxCollider2D coll;
+    
 
     // NAS RANO GIT TEST
 
@@ -63,7 +70,23 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         input = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(input*_speed, rb.velocity.y);
+        if (counter <= 0)
+        {
+            rb.velocity = new Vector2(input * _speed, rb.velocity.y);
+        }
+        else
+        {
+            if (knockright)
+            {
+                rb.velocity = new Vector2(-knock, knock);
+            }
+            else
+            {
+                rb.velocity = new Vector2(knock, knock);
+            }
+            counter -= Time.deltaTime;
+        }
+        
         if (input != 0)
         {
             if(input > 0)
