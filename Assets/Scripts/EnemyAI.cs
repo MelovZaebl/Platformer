@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Animations;
 public class EnemyAI : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -13,20 +13,28 @@ public class EnemyAI : MonoBehaviour
     private float forWallright=1.3f;
     [SerializeField] private SpriteRenderer sprite;
     private Vector3 f = new Vector3(1.2f, 0f);
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
+       
         if (isGround())
         {
             jump();
+            animator.SetBool("IsJump", false);
         }
-        
+        else
+        {
+            animator.SetBool("IsJump", true);
+        }
+               
         if (isLeftWall())
         {
             dir = 2;
@@ -45,11 +53,15 @@ public class EnemyAI : MonoBehaviour
 
         if (dir > 0)
         {
+            
+            animator.SetBool("IsRun", true);
             this.gameObject.transform.position = new Vector2(transform.position.x + dir * Time.deltaTime, transform.position.y);
             
         }
         else
-        { 
+        {
+            
+            animator.SetBool("IsRun", true);
             this.gameObject.transform.position = new Vector2(transform.position.x + dir * Time.deltaTime, transform.position.y);
             
         }
@@ -119,7 +131,9 @@ public class EnemyAI : MonoBehaviour
     {
         if( Physics2D.Raycast(coll.bounds.center, Vector2.right, forWallright, ground)|| Physics2D.Raycast(coll.bounds.center, Vector2.left, forWallleft, ground))
         {
+            animator.SetBool("IsJump", true);
             rb.AddForce(Vector2.up*2.8f, ForceMode2D.Impulse);
+           
         }
     }
     public bool isGround()

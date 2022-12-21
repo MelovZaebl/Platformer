@@ -8,16 +8,23 @@ public class ScoreScript : MonoBehaviour
     
     public Text ScoreText;
     public static int ScoreInt;
-
+    
     void Start()
     {
-        ScoreInt = 0;
+
+        ScoreInt = PlayerPrefs.GetInt("Score");
         ScoreText.text = "Score: " + ScoreInt;
+        if (LivesScript.current < 0)
+        {
+            ScoreInt -= 10;
+        }
     }
     void FixedUpdate()
     {
         
+        PlayerPrefs.SetInt("Score", ScoreInt);
         ScoreText.text = "Score: " + ScoreInt;
+
     }
 
 

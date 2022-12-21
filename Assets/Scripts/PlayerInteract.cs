@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInteract : MonoBehaviour
 {
 
-    [SerializeField] private GameObject enemy;
+    
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -34,16 +35,29 @@ public class PlayerMovement : MonoBehaviour
         if (LivesScript.current > 0)
         {
             LivesScript.canmove = true;
-        } 
+        }
+        else
+        {
+            
+        }
     }
     void Update()
     {
         Jump();
         FlyCheck();
+        if (LivesScript.current <= 0)
+        {
+            animator.SetBool("die", true);
+        }
     }
     
 
-
+    public void Die()
+    {
+        animator.SetBool("die", false);
+        Debug.Log("You die");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
     private void Move()

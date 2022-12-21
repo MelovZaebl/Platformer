@@ -9,6 +9,7 @@ TagManager:
   - EnemyBody
   - EnemyHead
   - Enemy
+  - DeathScreenSpawn
   layers:
   - Default
   - TransparentFX
