@@ -9876,6 +9876,10 @@ PrefabInstance:
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 394486203}
+    - target: {fileID: 8928982964120564567, guid: d8fd0cb07eb101d49a6652f23ad9a3fd, type: 3}
+      propertyPath: HP
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 8928982964120564585, guid: d8fd0cb07eb101d49a6652f23ad9a3fd, type: 3}
       propertyPath: m_Name
       value: Player

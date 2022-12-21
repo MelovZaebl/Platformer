@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer _chapterSprite;
     [SerializeField] private int HP;
     [SerializeField] private int Damage;
-     public static float knock=6f;
+     public static float knock=5f;
      public static bool knockright;
-     public static float totaltime=0.2f;
+     public static float totaltime=0.5f;
      public static float counter;
 
 
@@ -79,10 +79,12 @@ public class PlayerMovement : MonoBehaviour
             if (knockright)
             {
                 rb.velocity = new Vector2(-knock, knock);
+                rb.AddForce(Vector2.down*3f, ForceMode2D.Impulse);
             }
             else
             {
                 rb.velocity = new Vector2(knock, knock);
+                rb.AddForce(Vector2.down*3f, ForceMode2D.Impulse);
             }
             counter -= Time.deltaTime;
         }
